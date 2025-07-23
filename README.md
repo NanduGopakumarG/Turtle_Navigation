@@ -8,6 +8,12 @@ This repository showcases **turtle navigation tasks** using the `turtlesim` pack
 
 # GUI Control using rqt_robot_steering
 
+Launch the turtlesim node:
+
+      cd ~/ws
+      
+      ros2 run turtlesim turtlesim_node
+
 Launch the graphical slider-based interface:
 
       rqt_robot_steering
@@ -24,28 +30,36 @@ This allows fine-tuned real-time control of turtle movement via a user-friendly 
 
 # File Structure
 
-      turtle_navigation/
-      
-        ├── goal_1_spawn_turtle.py
-        ├── goal_1_pid_controller.py 
-        ├── goal_1_pid_cont_plot.py
-        ├── README.md
-        └── figures/
-        └── pid_plot_example.png        # Example performance graph
-    
+      Turtle_Navigation/
+            ├── Turtle_Navigation/
+            │ ├── img/
+            │ │ ├── goal_1_a.png
+            │ │ ├── goal_1_b.png
+            │ │ ├── goal_1_c.png
+            │ │ ├── goal_2_a.png
+            │ │ ├── goal_2_b.png
+            │ │ └── goal_2_c.png
+            │ ├── p_code_2/
+            │ │ ├── goal_1_pid_cont_plot.py
+            │ │ ├── goal_1_pid_controller.py
+            │ │ ├── goal_1_spawn_turtle.py
+            │ │ ├── goal_2_grid_pattern.py
+            │ │ ├── goal_2_velocity_const_plot.py
+            │ │ ├── goal_2_velocity_constraints.py
+            │ │ ├── goal_3_circle_turtle.py
+            │ │ ├── goal_4_chase.py
+            │ │ ├── goal_5_chase.py
+            │ │ └── goal_6_chase.py
+            ├── LICENSE
+            └── README.md
+
 # Dependencies
 
 Make sure the following packages are installed:
 
-- rclpy
+rclpy, geometry_msgs, turtlesim, math, random, time, numpy, filterpy, rqt_graph, rqt_plot, rqt_robot_steering.
 
-- turtlesim
-
-- rqt_robot_steering
-
-- matplotlib (for plotting)
-
-- numpy
+Replace <distro> with your ROS 2 distribution (e.g., humble, iron, foxy).
 
 Install missing Python dependencies via:
 
@@ -79,6 +93,8 @@ Launch the simulation environment:
 
 Run the spawning script:
 
+      cd ~/ws/src/Turtle_Navigation/p_code_2
+      
       python3 goal_1_spawn_turtle.py
       
 This will create a new turtle at a random coordinate within the Turtlesim window.
@@ -87,7 +103,9 @@ This will create a new turtle at a random coordinate within the Turtlesim window
 
 Use rqt_robot_steering to control the turtle interactively:
 
-      rqt_robot_steering
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       rqt_robot_steering
       
 Adjust the linear and angular velocity sliders to move the turtle manually.
 
@@ -95,7 +113,9 @@ Adjust the linear and angular velocity sliders to move the turtle manually.
 
 Activate PID control with:
 
-      python3 goal_1_pid_controller.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_1_pid_controller.py
       
 Modify Kp, Ki, and Kd values in the script to observe changes in movement performance.
 
@@ -105,7 +125,9 @@ Set a custom goal position in the script.
 
 Visualize the effect of different PID settings:
 
-      python3 goal_1_pid_cont_plot.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_1_pid_cont_plot.py
 
 This script plots key data such as position error over time.
 
@@ -133,7 +155,9 @@ The aim of this goal is to simulate **realistic turtle movement** in the `turtle
 
 Run the velocity control script with acceleration and deceleration limits:
 
-      python3 goal_2_velocity_constraints.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_2_velocity_constraints.py
 
 Parameters:
 
@@ -145,7 +169,9 @@ Parameters:
 
 ### Plotting Velocity Profiles
 
-      python3 goal_2_velocity_const_plot.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_2_velocity_const_plot.py
       
 Plots:
 
@@ -160,7 +186,9 @@ Plots:
 
 Make the turtle follow a grid using velocity-constrained motion:
 
-      python3 goal_2_grid_pattern.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_2_grid_pattern.py
 
 Computes grid waypoints
 
@@ -198,8 +226,8 @@ The goal of this task is to control the turtle in the `turtlesim` simulator to:
 ### Write the Circle Control Script
 
 Create a Python node:
-
-      goal_3_circle_turtle.py
+       
+       goal_3_circle_turtle.py
 
 Commands circular motion by adjusting:
 
@@ -219,7 +247,9 @@ Publishes:
 
 In another terminal:
 
-      python3 goal_3_circle_turtle.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_3_circle_turtle.py
       
 - The turtle will start moving in a circle.
 
@@ -267,7 +297,9 @@ Run the Python script:
 
 In another terminal:
 
-      python3 goal_4_chase.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_4_chase.py
 
 ---
 
@@ -313,7 +345,9 @@ Computes:
 
 Run in a new terminal:
 
-      python3 goal_5_chase.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_5_chase.py
 
 Component	Description
 
@@ -369,7 +403,9 @@ Script Logic
 
 ### Run the Script
 
-      python3 goal_6_chase.py
+       cd ~/ws/src/Turtle_Navigation/p_code_2
+       
+       python3 goal_6_chase.py
 
 Make sure that rt_noisy_pose is being published by another node/script (noisy_pose_publisher.py), simulating the 5-second noisy updates.
 
